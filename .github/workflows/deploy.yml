@@ -43,5 +43,5 @@ jobs:
 
       - name: List remote directory contents
         run: |
-          echo $TARGET
+          echo REMOTE_TARGET
           ls
