@@ -41,9 +41,11 @@ jobs:
           REMOTE_USER: ${{ secrets.REMOTE_USER }}
           REMOTE_TARGET: ${{ secrets.TARGET}}
 
-      - name: List remote directory contents
+      - name: List remote directory contents and run Streamlit
         run: |
-          pip install -r requirements.txt
+          ssh -o StrictHostKeyChecking=no ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} << 'EOF'
+            cd $REMOTE_TARGET
+            pip install -r requirements.txt
             nohup streamlit run app.py --server.port 8501 &
           EOF
         env:
