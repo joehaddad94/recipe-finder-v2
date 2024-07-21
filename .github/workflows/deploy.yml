@@ -43,4 +43,6 @@ jobs:
 
       - name: List remote directory contents
         run: |
-          ls
+          ssh -o StrictHostKeyChecking=no ${{ secrets.REMOTE_USER }}@${{ secrets.REMOTE_HOST }} "ls -la ${{ secrets.TARGET }}"
+        env:
+          SSH_PRIVATE_KEY: ${{ secrets.SSH_PRIVATE_KEY }}
