@@ -1,3 +1,7 @@
+"""
+Streamlit app to find recipes based on ingredients using the Spoonacular API.
+"""
+
 import streamlit as st
 import requests
 
